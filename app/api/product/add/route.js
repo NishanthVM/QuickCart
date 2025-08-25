@@ -1,5 +1,5 @@
 import { v2 as cloudinary } from "cloudinary";
-import Product from "../../../product/[id]/page";
+import Product from "@/models/product.js";
 import { getAuth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 import authSeller from "@/lib/authSeller";
