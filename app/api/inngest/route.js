@@ -4,10 +4,16 @@ import {
   syncUserCreation,
   syncUserUpdation,
   syncUserDeletion,
+  createUserOrder,
 } from "@/config/inngest.js";
 
 // Create an API that serves zero functions
 export const { GET, POST, PUT } = serve({
   client: inngest,
-  functions: [syncUserCreation, syncUserUpdation, syncUserDeletion],
+  functions: [
+    syncUserCreation,
+    syncUserUpdation,
+    syncUserDeletion,
+    createUserOrder,
+  ],
 });

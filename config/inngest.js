@@ -1,6 +1,7 @@
 import User from "@/models/user";
 import connectDB from "./db";
 import { Inngest } from "inngest";
+import Order from "@/models/Order";
 
 export const inngest = new Inngest({ id: "quickcart-next" });
 
@@ -131,5 +132,8 @@ export const createUserOrder = inngest.createFunction(
       };
     });
     await connectDB();
+    await Order.insertMany(orders);
+
+    return { success: true, processed: orders.length };
   }
 );
