@@ -4,7 +4,7 @@ const productSchema = new mongoose.Schema({
   userId: {
     type: String,
     required: true,
-    ref: user,
+    ref: "user",
   },
   name: {
     type: String,
@@ -37,5 +37,5 @@ const productSchema = new mongoose.Schema({
 });
 
 const Product =
-  mongoose.model.product || mongoose.model("Product", productSchema);
+  mongoose.model.product || mongoose.model("product", productSchema);
 export default Product;

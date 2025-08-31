@@ -1,5 +1,5 @@
+import User from "@/models/User.js";
 import { getAuth } from "@clerk/nextjs/server";
-import User from "@/models/User";
 
 export async function GET(request) {
   try {

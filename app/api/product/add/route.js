@@ -1,8 +1,9 @@
 import { v2 as cloudinary } from "cloudinary";
-import Product from "@/models/Product.js";
-import { getAuth } from "@clerk/nextjs/server";
-import { NextResponse } from "next/server";
 import authSeller from "@/lib/authSeller";
+import { getAuth } from "@clerk/nextjs/server";
+import connectDB from "@/config/db";
+import Product from "@/models/Product";
+import { NextResponse } from "next/server";
 
 //configure cloudinary
 
@@ -12,23 +13,23 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-export async function POST(req) {
+export async function POST(request) {
   try {
-    const { userId } = getAuth(req);
-    const isSeller = await authSeller({ userId });
+    const { userId } = getAuth(request);
+    const isSeller = await authSeller(userId);
     if (!isSeller) {
       return NextResponse.json({
         success: false,
         message: "You are not a seller",
       });
     }
-    const formData = await req.formData();
+    const formData = await request.formData();
     const name = formData.get("name");
     const description = formData.get("description");
     const category = formData.get("category");
     const price = formData.get("price");
     const offerPrice = formData.get("offerPrice");
-    const files = formData.getAll("files");
+    const files = formData.getAll("images");
     if (!files || files.length === 0) {
       return NextResponse.json({
         success: false,
@@ -62,7 +63,7 @@ export async function POST(req) {
       description,
       category,
       price: Number(price),
-      offerPrice,
+      offerPrice: Number(price),
       image,
       date: Date.now(),
     });
