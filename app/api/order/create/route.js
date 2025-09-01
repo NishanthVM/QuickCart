@@ -1,6 +1,6 @@
 import { inngest } from "@/config/inngest";
-import Product from "../../../../models/Product";
-import User from "../../../../models/User";
+import Product from "../../../../models/Product.js";
+import User from "../../../../models/User.js";
 import { getAuth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 

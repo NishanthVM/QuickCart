@@ -1,5 +1,5 @@
 import connectDB from "@/config/db";
-import Address from "../../../../models/Address";
+import Address from "../../../../models/Address.js";
 import Order from "@/models/Order";
 import Product from "@/models/Product";
 import { getAuth } from "@clerk/nextjs/server";
