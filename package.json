@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^6.31.6",
+    "serialize-error-cjs": "^0.2.0",
     "@tailwindcss/postcss": "^4.1.11",
     "axios": "^1.11.0",
     "cloudinary": "^2.7.0",
