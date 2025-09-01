@@ -17,12 +17,16 @@ const addressSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  area: {
+    type: String,
+    required: true,
+  },
   city: {
     type: String,
     required: true,
   },
   state: {
-    type: Number,
+    type: String,
     required: true,
   },
 });

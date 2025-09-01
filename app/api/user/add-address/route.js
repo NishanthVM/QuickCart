@@ -8,11 +8,15 @@ export async function POST(request) {
     const { userId } = getAuth(request);
     const { address } = await request.json();
     await connectDB();
-    const newAddress = new Address.create({
+    const newAddress = await Address.create({
       ...address,
       userId,
     });
-    return NextResponse.json({ success: true, message: "Address added" });
+    return NextResponse.json({
+      success: true,
+      message: "Address added",
+      newAddress,
+    });
   } catch (error) {
     return NextResponse.json({ success: false, message: error.message });
   }

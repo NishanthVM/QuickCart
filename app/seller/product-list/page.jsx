@@ -34,7 +34,7 @@ const ProductList = () => {
   };
 
   useEffect(() => {
-    if (!user) {
+    if (user) {
       fetchSellerProduct();
     }
   }, [user]);
