@@ -42,7 +42,7 @@ export const AppContextProvider = (props) => {
         setIsSeller(true);
       }
       const token = await getToken();
-      await axios.get("/api/user/data", {
+      const { data } = await axios.get("/api/user/data", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

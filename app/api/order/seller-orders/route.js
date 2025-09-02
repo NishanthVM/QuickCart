@@ -17,11 +17,10 @@ export async function GET(request) {
         message: "You are not a seller",
       });
     }
+
     Address.length;
 
-    const orders = await Order.find({ sellerId: userId }).populate(
-      "address items.product"
-    );
+    const orders = await Order.find({}).populate("address items.product");
     return NextResponse.json({ success: "true", orders });
   } catch (error) {
     console.log(error);
